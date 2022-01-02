@@ -2,8 +2,8 @@ import errorHandler from "errorhandler";
 import typeorm, { Connection, createConnection } from "typeorm";
 
 import app from "./app";
-import { Movie } from "./Entity/Movie";
-import { User } from "./Entity/User";
+import { Movie } from "./entity/Movie";
+import { User } from "./entity/User";
 
 const typeOrmConnect = async () => {
   try {
