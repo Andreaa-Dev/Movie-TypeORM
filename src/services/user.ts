@@ -17,7 +17,24 @@ const findUserByEmail = async (email: string): Promise<User> => {
   return foundUser;
 };
 
-const updateUserById = async (id: number): Promise<User> => {
-  const foundUser = await User.findOne({ id: id });
+const updateUserById = async (
+  userID: number,
+  update: Partial<User>
+): Promise<User> => {
+  let foundUser = await User.findOne({ id: userID });
+  if (!foundUser) {
+    throw new NotFoundError("User not found");
+  }
+  const newUser = { ...foundUser, ...update } as User;
+  return newUser.save();
 };
+
+const deleteUserByEmail = async (email: string): Promise<User> => {
+  const foundUser = await User.findOne({ email: email });
+  if (!foundUser) {
+    throw new NotFoundError("User not found");
+  }
+  return foundUser?.remove();
+};
+
 export default { createUser, findAll, findUserByEmail };
