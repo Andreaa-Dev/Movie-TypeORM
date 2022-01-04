@@ -1,16 +1,16 @@
-import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
 
 @Entity()
 export class Movie extends BaseEntity {
-    @PrimaryGeneratedColumn()
-    id!: number;
+  @PrimaryGeneratedColumn()
+  id!: number;
 
-    @Column()
-    name!: string;
+  @Column()
+  title!: string;
 
-    @Column()
-    lastName!: string;
+  @Column()
+  description!: string;
 
-    @Column()
-    phoneNUmber!: number
+  @Column()
+  duration!: number;
 }
