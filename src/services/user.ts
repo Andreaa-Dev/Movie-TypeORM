@@ -6,15 +6,18 @@ const createUser = async (user: User): Promise<User> => {
 };
 
 const findAll = async (user: User): Promise<User[]> => {
-  return await User.find();
+  return User.find();
 };
 
-const findUserByEmail = async (email: string): Promise<User | undefined> => {
-  const foundUser = User.findOne({ email: email });
+const findUserByEmail = async (email: string): Promise<User> => {
+  const foundUser = await User.findOne({ email: email });
   if (!foundUser) {
-    throw new NotFoundError(`User not found`);
+    throw new NotFoundError("User not found");
   }
   return foundUser;
 };
 
-export default { createUser };
+const updateUserById = async (id: number): Promise<User> => {
+  const foundUser = await User.findOne({ id: id });
+};
+export default { createUser, findAll, findUserByEmail };

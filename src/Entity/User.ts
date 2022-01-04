@@ -15,5 +15,5 @@ export class User extends BaseEntity {
   email!: string;
 
   @Column()
-  phoneNUmber!: number;
+  phoneNumber!: number;
 }
