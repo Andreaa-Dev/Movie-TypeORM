@@ -1,5 +1,5 @@
-import { NotFoundError } from "../../helpers/apiError";
 import { User } from "../entity/User";
+import { NotFoundError } from "../../helpers/apiError";
 
 const createUser = async (user: User): Promise<User> => {
   return User.create(user).save();
@@ -37,4 +37,10 @@ const deleteUserByEmail = async (email: string): Promise<User> => {
   return foundUser?.remove();
 };
 
-export default { createUser, findAll, findUserByEmail };
+export default {
+  createUser,
+  findAll,
+  findUserByEmail,
+  updateUserById,
+  deleteUserByEmail,
+};
