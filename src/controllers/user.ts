@@ -27,13 +27,12 @@ export const createUser = async (
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const user = new User({
-      firstName,
-      lastName,
-      phoneNumber,
-      email,
-      password: hashedPassword,
-    });
+    const user = new User();
+    user.firstName = firstName;
+    user.lastName = lastName;
+    user.phoneNumber = phoneNumber;
+    user.email = email;
+    user.password = hashedPassword;
 
     await UserService.createUser(user);
   } catch (error) {
