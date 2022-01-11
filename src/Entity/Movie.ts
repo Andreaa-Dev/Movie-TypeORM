@@ -13,4 +13,7 @@ export class Movie extends BaseEntity {
 
   @Column()
   duration!: number;
+
+  @Column()
+  year!: number;
 }
