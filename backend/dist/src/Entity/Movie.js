@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Movie = void 0;
 const typeorm_1 = require("typeorm");
+const User_1 = require("./User");
 let Movie = class Movie extends typeorm_1.BaseEntity {
 };
 __decorate([
@@ -20,15 +21,32 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Movie.prototype, "name", void 0);
+], Movie.prototype, "title", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Movie.prototype, "lastName", void 0);
+], Movie.prototype, "description", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
-], Movie.prototype, "phoneNUmber", void 0);
+], Movie.prototype, "duration", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Movie.prototype, "year", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Movie.prototype, "rating", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Movie.prototype, "review", void 0);
+__decorate([
+    (0, typeorm_1.ManyToMany)(() => User_1.User),
+    (0, typeorm_1.JoinTable)(),
+    __metadata("design:type", Array)
+], Movie.prototype, "users", void 0);
 Movie = __decorate([
     (0, typeorm_1.Entity)()
 ], Movie);

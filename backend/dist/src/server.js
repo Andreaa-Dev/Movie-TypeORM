@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const errorhandler_1 = __importDefault(require("errorhandler"));
 const typeorm_1 = require("typeorm");
 const app_1 = __importDefault(require("./app"));
-const Movie_1 = require("./Entity/Movie");
-const User_1 = require("./Entity/User");
+const Movie_1 = require("./entity/Movie");
+const User_1 = require("./entity/User");
 const typeOrmConnect = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const connection = yield (0, typeorm_1.createConnection)({
