@@ -1,4 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToMany } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  ManyToMany,
+  JoinTable,
+} from "typeorm";
+
+import { User } from "./User";
 
 @Entity()
 export class Movie extends BaseEntity {
@@ -20,9 +29,10 @@ export class Movie extends BaseEntity {
   @Column()
   rating!: number;
 
-   @Column()
+  @Column()
   review!: string;
 
-
-  @ManyToMany
+  @ManyToMany(() => User)
+  @JoinTable()
+  users!: User[];
 }
