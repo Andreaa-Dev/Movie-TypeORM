@@ -1,4 +1,4 @@
-import { BadRequestError } from "./../../helpers/apiError";
+import { BadRequestError } from "../helpers/apiError";
 import { Request, Response, NextFunction } from "express";
 
 import MovieService from "../services/movie";

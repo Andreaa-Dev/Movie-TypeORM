@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import compression from "compression";
-import apiErrorHandler from "../middleswares/apiErrorHandler";
-import apiContentType from "../middleswares/apiContentType";
+import apiErrorHandler from "./middleswares/apiErrorHandler";
+import apiContentType from "./middleswares/apiContentType";
 
 dotenv.config({ path: "env" });
 const app = express();

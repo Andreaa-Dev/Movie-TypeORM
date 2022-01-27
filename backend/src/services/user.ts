@@ -1,5 +1,5 @@
 import { User } from "../entity/User";
-import { NotFoundError } from "../../helpers/apiError";
+import { NotFoundError } from "../helpers/apiError";
 
 const createUser = async (user: User): Promise<User> => {
   return User.create(user).save();

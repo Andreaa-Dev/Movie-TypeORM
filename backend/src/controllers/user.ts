@@ -1,5 +1,5 @@
-import { User } from "./../entity/User";
-import { BadRequestError } from "./../../helpers/apiError";
+import { User } from "../entity/User";
+import { BadRequestError } from "../helpers/apiError";
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
 
