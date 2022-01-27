@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToMany } from "typeorm";
 
 @Entity()
 export class Movie extends BaseEntity {
@@ -16,4 +16,13 @@ export class Movie extends BaseEntity {
 
   @Column()
   year!: number;
+
+  @Column()
+  rating!: number;
+
+   @Column()
+  review!: string;
+
+
+  @ManyToMany
 }
