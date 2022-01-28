@@ -11,7 +11,7 @@ const apiErrorHandler_1 = __importDefault(require("./middleswares/apiErrorHandle
 const apiContentType_1 = __importDefault(require("./middleswares/apiContentType"));
 dotenv_1.default.config({ path: "env" });
 const app = (0, express_1.default)();
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 5001);
 app.use(apiContentType_1.default);
 app.use((0, cors_1.default)());
 app.use((0, compression_1.default)());

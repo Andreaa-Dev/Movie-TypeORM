@@ -1,12 +1,17 @@
 import React from "react";
 
 import Logo from "../resuable/Logo";
+import { BoxRow } from "../style";
+import NavbarList from "./NavbarList";
+import NavIcon from "./navIcon";
 
 function index() {
   return (
-    <div>
+    <BoxRow>
       <Logo />
-    </div>
+      <NavbarList />
+      <NavIcon />
+    </BoxRow>
   );
 }
 

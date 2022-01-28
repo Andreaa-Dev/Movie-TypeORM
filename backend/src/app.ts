@@ -9,7 +9,7 @@ import apiContentType from "./middleswares/apiContentType";
 dotenv.config({ path: "env" });
 const app = express();
 
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 5001);
 app.use(apiContentType);
 
 app.use(cors());
