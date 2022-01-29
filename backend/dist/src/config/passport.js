@@ -8,23 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createMovie = void 0;
-const apiError_1 = require("../helpers/apiError");
-const Movie_1 = require("../entity/Movie");
-//create movie
-const createMovie = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { title, description, duration, year, rating, review } = req.body;
-        const movie = new Movie_1.Movie();
-    }
-    catch (error) {
-        if (error instanceof Error && error.name == "ValidationError") {
-            next(new apiError_1.BadRequestError("Invalid Request", error));
-        }
-        else {
-            next(error);
-        }
-    }
-});
-exports.createMovie = createMovie;
+exports.googleStrategy = void 0;
+const passport_google_id_token_1 = __importDefault(require("passport-google-id-token"));
+exports.googleStrategy = new passport_google_id_token_1.default(clientID);
+function (parsedToken, googleId, done) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const userPayload = {
+            email: pasrsedToken.payload.email
+        };
+    });
+}
