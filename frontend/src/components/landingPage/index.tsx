@@ -9,7 +9,7 @@ function index() {
   return (
     <Background>
       <Logo />
-      <Title> Who's watching ?</Title>
+      <Title> Log in </Title>
       <User />
       <ManageButton />
     </Background>

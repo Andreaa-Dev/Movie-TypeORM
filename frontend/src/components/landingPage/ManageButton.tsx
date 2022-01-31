@@ -5,7 +5,7 @@ import { ButtonStyle } from "../style";
 function ManageButton() {
   return (
     <div>
-      <ButtonStyle> Manage Profiles</ButtonStyle>
+      <ButtonStyle>Continue</ButtonStyle>
     </div>
   );
 }
