@@ -1,7 +1,20 @@
 import { User } from "../entity/User";
 import { NotFoundError } from "../helpers/apiError";
 
+type UserPayload = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  image: string;
+};
+
 const createUser = async (user: User): Promise<User> => {
+  return User.create(user).save();
+};
+
+const createUserWithGoogle = async (
+  user: UserPayload
+): Promise<UserPayload> => {
   return User.create(user).save();
 };
 
@@ -39,6 +52,7 @@ const deleteUserByEmail = async (email: string): Promise<User> => {
 
 export default {
   createUser,
+  createUserWithGoogle,
   findAll,
   findUserByEmail,
   updateUserById,
