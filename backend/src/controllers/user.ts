@@ -1,11 +1,13 @@
-import { User } from "../entity/User";
-import { BadRequestError } from "../helpers/apiError";
-import { Request, Response, NextFunction } from "express";
+import { InternalServerError } from "./../helpers/apiError";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { Request, Response, NextFunction } from "express";
 
+import { User } from "./../entity/User";
 import UserService from "../services/user";
+import { BadRequestError } from "../helpers/apiError";
+import { JWT_SECRET } from "../../util/secrets";
 
-//create user
 export const createUser = async (
   req: Request,
   res: Response,
@@ -41,5 +43,29 @@ export const createUser = async (
     } else {
       next(error);
     }
+  }
+};
+
+export const authenticate = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const userGoogleData = req.user as User;
+    console.log("i");
+    const { email, firstName, lastName, image } = userGoogleData;
+    const token = jwt.sign(
+      {
+        email: req.body.email,
+        firstName: req.body.firstName,
+        image: req.body.picture,
+      },
+      JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+    res.json({ token, userGoogleData });
+  } catch (error) {
+    return next(new InternalServerError());
   }
 };

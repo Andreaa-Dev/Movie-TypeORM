@@ -12,13 +12,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.googleStrategy = void 0;
+exports.jwtStrategy = exports.googleStrategy = void 0;
 const passport_google_id_token_1 = __importDefault(require("passport-google-id-token"));
-exports.googleStrategy = new passport_google_id_token_1.default(clientID);
-function (parsedToken, googleId, done) {
+const passport_jwt_1 = require("passport-jwt");
+const secrets_1 = require("../../util/secrets");
+const user_1 = __importDefault(require("../services/user"));
+const clientId = process.env.GOOGLE_CLIENT_ID;
+exports.googleStrategy = new passport_google_id_token_1.default({ clientID: clientId }, function (parsedToken, googleId, done) {
+    var _a, _b, _c;
     return __awaiter(this, void 0, void 0, function* () {
+        console.log("k");
         const userPayload = {
-            email: pasrsedToken.payload.email
+            email: parsedToken === null || parsedToken === void 0 ? void 0 : parsedToken.payload.email,
+            firstName: (_a = parsedToken === null || parsedToken === void 0 ? void 0 : parsedToken.payload) === null || _a === void 0 ? void 0 : _a.given_name,
+            lastName: (_b = parsedToken === null || parsedToken === void 0 ? void 0 : parsedToken.payload) === null || _b === void 0 ? void 0 : _b.family_name,
+            image: (_c = parsedToken === null || parsedToken === void 0 ? void 0 : parsedToken.payload) === null || _c === void 0 ? void 0 : _c.picture,
         };
+        const user = yield user_1.default.createUserWithGoogle(userPayload);
+        done(null, user);
     });
-}
+});
+exports.jwtStrategy = new passport_jwt_1.Strategy({
+    secretOrKey: secrets_1.JWT_SECRET,
+    jwtFromRequest: passport_jwt_1.ExtractJwt.fromAuthHeaderAsBearerToken(),
+}, (payload, done) => __awaiter(void 0, void 0, void 0, function* () {
+    const userEmail = payload.email;
+    const foundUser = yield user_1.default.findUserByEmail(userEmail);
+    done(null, foundUser);
+}));

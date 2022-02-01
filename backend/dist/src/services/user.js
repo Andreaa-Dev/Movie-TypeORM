@@ -14,6 +14,9 @@ const apiError_1 = require("../helpers/apiError");
 const createUser = (user) => __awaiter(void 0, void 0, void 0, function* () {
     return User_1.User.create(user).save();
 });
+const createUserWithGoogle = (user) => __awaiter(void 0, void 0, void 0, function* () {
+    return User_1.User.create(user).save();
+});
 const findAll = (user) => __awaiter(void 0, void 0, void 0, function* () {
     return User_1.User.find();
 });
@@ -41,6 +44,7 @@ const deleteUserByEmail = (email) => __awaiter(void 0, void 0, void 0, function*
 });
 exports.default = {
     createUser,
+    createUserWithGoogle,
     findAll,
     findUserByEmail,
     updateUserById,

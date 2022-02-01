@@ -38,5 +38,5 @@ export const Text = styled(Typography)`
 
 export const ButtonStyle = styled(Button)`
   border: 2px solid grey;
-  background-color: rgb(20, 20, 20);
+  // background-color: rgb(20, 20, 20);
 `;

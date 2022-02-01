@@ -1,7 +1,7 @@
 import React from "react";
 
 function index() {
-  return <div>User here</div>;
+  return <div>log in with password</div>;
 }
 
 export default index;

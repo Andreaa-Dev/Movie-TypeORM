@@ -2,13 +2,14 @@ import GoogleTokenStrategy from "passport-google-id-token";
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 
 import { JWT_SECRET } from "../../util/secrets";
-
 import UserService from "../services/user";
 
 const clientId = process.env.GOOGLE_CLIENT_ID;
+
 export const googleStrategy = new GoogleTokenStrategy(
   { clientID: clientId },
   async function (parsedToken: any, googleId: string, done: any) {
+    console.log("k");
     const userPayload = {
       email: parsedToken?.payload.email,
       firstName: parsedToken?.payload?.given_name,
